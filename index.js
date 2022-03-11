@@ -21,10 +21,19 @@ client.events = new Discord.Collection()
 
 // Creating a func
 client.loadEvents = (bot, reload) => require("./handlers/events")(bot, reload)
+client.loadCommands = (bot, reload) => require("./handlers/commands")(bot, reload)
+
 // Calling the func
 client.loadEvents(bot, false)
+client.loadCommands(bot, false)
 
 module.exports = bot
+
+client.on("messageCreate", (message) => {
+    if (message.content == "hi"){
+        message.reply("Big dick is back in town!\n ヽ(▔ω▔･)")
+    }
+})
 
 // Login to Discord with your client's token
 client.login(token);

@@ -19,7 +19,7 @@ module.exports  = (bot, reload) => {
 
         if (!reload)
             console.log(`------------------------------------------|`)
-            console.log(`   ${i + 1}.   | ${f} loaded`)
+            console.log(`   ${i + 1}.   | ${f}  -loaded`)
             console.log(`------------------------------------------|`)
     })
 
@@ -46,5 +46,9 @@ function initEvents(bot) {
     
     client.on("ready", () => {
         triggerEventHandler(bot, "ready")
+    })
+
+    client.on("messageCreate", (message) => {
+        triggerEventHandler(bot, "messageCreate", message)
     })
 }
