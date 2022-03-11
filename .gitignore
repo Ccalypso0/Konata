@@ -1,0 +1,6 @@
+.env
+config.json
+package-lock.json
+node_modules/
+Misc/
+cmd.bat
