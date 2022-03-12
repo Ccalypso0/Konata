@@ -9,14 +9,17 @@ module.exports = {
 
       if (message.author.bot) return
 
-      if (!message.content.startsWith(prefix)) 
-        return
+      if (!message.content.startsWith(prefix)) return
 
       const args = message.content.slice(prefix.length).trim().split(/ +/g)
       const commandString = args.shift().toLowerCase()
 
-      let command = client.commands.get(commandString)
-      if (!command) return
+      let command = client.commands.get(commandString) || client.commands.find(a => a.aliases && a.aliases.includes(commandString));
+      if (!command) { 
+        return message.channel.send("`❌ Incorrect command!` | **Check:** `-help`")
+        .then(msg => setTimeout(() => msg.delete(), 5000*4)) // Autodelete BOT message
+        .then(msg => setTimeout(() => message.delete(), 5000*4)); // Autodelete USER message
+      }
 
       let member = message.member
       if (command.devOnly && !owners.includes(member.id)){

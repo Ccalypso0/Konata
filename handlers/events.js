@@ -19,7 +19,7 @@ module.exports  = (bot, reload) => {
 
         if (!reload)
             console.log(`------------------------------------------|`)
-            console.log(`   ${i + 1}.   | ${f}  -loaded`)
+            console.log(`   ${i + 1}.   |loaded| ${f}`)
             console.log(`------------------------------------------|`)
     })
 

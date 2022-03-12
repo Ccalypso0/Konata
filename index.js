@@ -35,5 +35,11 @@ client.on("messageCreate", (message) => {
     }
 })
 
+client.on("messageCreate", (message) => {
+    if ((message.content == "OwO") || (message.content == "UwU")){
+        message.reply("Major Weeb Alert! :rotating_light:")
+    }
+})
+
 // Login to Discord with your client's token
 client.login(token);
